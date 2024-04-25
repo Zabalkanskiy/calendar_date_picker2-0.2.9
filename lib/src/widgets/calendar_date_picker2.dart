@@ -234,7 +234,7 @@ class _CalendarDatePicker2State extends State<CalendarDatePicker2> {
           var constraintsDays = difference?.inDays;
           var constraint = false;
           if (constraintsDays != null) {
-            constraint = (constraintsDays < -3) || (constraintsDays > 0);
+            constraint = (constraintsDays <= -3) || (constraintsDays > 0);
           }
 
           var isRangeSet = selectedDates.length > 1 &&
