@@ -234,16 +234,15 @@ class _CalendarDatePicker2State extends State<CalendarDatePicker2> {
           var constraintsDays = difference?.inDays;
           var constraint = false;
           if (constraintsDays != null) {
-            constraint = (constraintsDays > -3) && (constraintsDays < 0);
+            constraint = (constraintsDays < -3) && (constraintsDays > 0);
           }
 
           var isRangeSet = selectedDates.length > 1 &&
-              selectedDates[1] != null &&
-              constraint; //если задан диапазон
+              selectedDates[1] != null; //если задан диапазон
           var isSelectedDayBeforeStartDate = value
               .isBefore(selectedDates[0]!); // если значения перед датой стоит
 
-          if (isRangeSet || isSelectedDayBeforeStartDate) {
+          if (isRangeSet || isSelectedDayBeforeStartDate || constraint) {
             selectedDates = [value, null]; //сброс диапазона
           } else {
             selectedDates = [selectedDates[0], value];
